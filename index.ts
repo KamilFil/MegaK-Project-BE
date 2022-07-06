@@ -2,6 +2,7 @@ import express, {json} from "express";
 import "express-async-errors";
 import cors from "cors";
 import {handleError} from "./utils/errors";
+import {attractionRoute} from "./routers/attraction.route";
 
 const app = express()
 app.use(json())
@@ -11,6 +12,8 @@ app.use(cors({
 app.get('/', (req, res) => {
 res.send('OK')
 })
+
+app.use('/attraction/', attractionRoute)
 
 app.use(handleError)
 
