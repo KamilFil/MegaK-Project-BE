@@ -1,7 +1,7 @@
 
 export interface AdAttractionEntity extends Omit<AttractionEntity, 'id' | "valueLike"> {
     id?: string,
-    valueLike?: number,
+    // valueLike?: number,
 
 }
 
@@ -11,7 +11,8 @@ export interface AttractionEntity {
     town:string,
     text: string,
     img: string,
-    categoryId: string,
+    // categoryId: string,
     valueLike: number;
+
 }
 
