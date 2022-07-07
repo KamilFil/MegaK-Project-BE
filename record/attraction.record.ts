@@ -35,7 +35,7 @@ export class AttractionRecord implements AttractionEntity {
     }
 
     static async getAll(): Promise<AttractionRecord[]> {
-        const [results] = (await pool.execute("SELECT * FROM `attraction`")) as AttractionResult
+        const [results] = (await pool.execute("SELECT * FROM `attraction` ORDER BY nameAttraction DESC")) as AttractionResult
         return results.map(obj => new AttractionRecord(obj))
     }
 

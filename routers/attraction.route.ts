@@ -10,8 +10,7 @@ export const attractionRoute = Router()
 
     .post('/add', async (req, res) => {
         const attAd = new AttractionRecord(req.body);
-        console.log(req.body)
-        // await attAd.insert()
+        await attAd.insert()
         res.json(attAd)
     })
 
