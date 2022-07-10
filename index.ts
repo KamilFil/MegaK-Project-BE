@@ -3,17 +3,16 @@ import "express-async-errors";
 import cors from "cors";
 import {handleError} from "./utils/errors";
 import {attractionRoute} from "./routers/attraction.route";
+import {adminRoute} from "./routers/admin.route";
 
 const app = express()
 app.use(json())
 app.use(cors({
     origin:"http://localhost:3000"
 }))
-app.get('/', (req, res) => {
-res.send('OK')
-})
 
 app.use('/attraction/', attractionRoute)
+app.use('/admin/', adminRoute)
 
 app.use(handleError)
 

@@ -12,8 +12,8 @@ export class AttractionRecord implements AttractionEntity {
     img: string;
     text: string;
     town: string;
-    valueLike: number;
-
+    valueLike: number = 0;
+    active: number = 0;
 
     constructor(obj: AdAttractionEntity) {
         this.id = obj.id;
@@ -21,6 +21,7 @@ export class AttractionRecord implements AttractionEntity {
         this.img = obj.img;
         this.text = obj.text;
         this.town = obj.town;
+        this.active = obj.active;
     }
 
     async insert(): Promise<string> {
@@ -33,6 +34,21 @@ export class AttractionRecord implements AttractionEntity {
         await pool.execute("INSERT INTO `attraction`(`id`, `nameAttraction`, `img`, `text`, `town`) VALUES(:id, :nameAttraction, :img, :text, :town)",this)
         return this.id
     }
+
+    async delete(): Promise<void> {
+        await pool.execute("DELETE FROM `attraction` WHERE `id` = :id", {
+            id: this.id
+        })
+    }
+
+    async updateAtraction(): Promise<void> {
+        await pool.execute("UPDATE `attraction` SET `nameAttraction` = :nameAttraction, `active` = :active WHERE `id` = :id",{
+            id: this.id,
+            nameAttraction: this.nameAttraction,
+            active: this.active,
+        })
+    }
+
 
     static async getAll(): Promise<AttractionRecord[]> {
         const [results] = (await pool.execute("SELECT * FROM `attraction` ORDER BY nameAttraction DESC")) as AttractionResult

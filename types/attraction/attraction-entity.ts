@@ -13,6 +13,15 @@ export interface AttractionEntity {
     img: string,
     // categoryId: string,
     valueLike: number;
+    active: number;
 
+}
+
+export interface UpdateAttReq {
+  nameAttraction: string,
+}
+
+export interface AttRes {
+    nameAttraction: string,
 }
 
