@@ -11,7 +11,8 @@ export const attractionRoute = Router()
     .post('/add', async (req, res) => {
         const attAd = new AttractionRecord(req.body);
         await attAd.insert()
-        res.json(attAd.nameAttraction)
+        res.json(attAd.nameAttraction).redirect('/')
+
     })
 
     .get('/:id', async (req, res) => {
