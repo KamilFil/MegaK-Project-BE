@@ -1,18 +1,20 @@
 import {Router} from "express";
 import {AttractionRecord} from "../record/attraction.record";
-import {addLikeReq, UpdateAttReq} from "../types";
+import { UpdateAttReq} from "../types";
+import {CategoryRecord} from "../record/category.record";
 
 export const attractionRoute = Router()
     .get('/', async (req, res) => {
         const attListRes = await AttractionRecord.getAll();
-        res.json(attListRes)
-        // res.json(attListRes)
+        const allCategory = await CategoryRecord.getAllCat();
+        res.json({attListRes, allCategory})
     })
+
 
     .post('/add', async (req, res) => {
         const attAd = new AttractionRecord(req.body);
         await attAd.insert()
-        res.json(attAd.nameAttraction).redirect('/')
+        res.json(attAd.nameAttraction)
 
     })
 
@@ -27,13 +29,14 @@ export const attractionRoute = Router()
 
         await att.updateAttraction()
 
-        // const attListRes = await AttractionRecord.getAll();
         res.json(att)
 
     })
 
 
-    .get('/:id', async (req, res) => {
+
+
+    .get('/att/:id', async (req, res) => {
         const attRes = await AttractionRecord.getOne(req.params.id)
         if(attRes == null) {
             return res.status(404).redirect('/404/')
@@ -41,7 +44,7 @@ export const attractionRoute = Router()
         res.json(attRes)
     })
 
-    .patch('/:id', async (req, res) => {
+    .patch('/att/:id', async (req, res) => {
         const {body}: {
             body: UpdateAttReq;
         } = req;
@@ -58,9 +61,7 @@ export const attractionRoute = Router()
         res.json(att)
     })
 
-
-
-    .delete('/:id', async (req, res) => {
+    .delete('/att/:id', async (req, res) => {
         const attDel = await AttractionRecord.getOne(req.params.id)
         if(!attDel) {
             throw new Error('Brak attrakcji z takim ID')
@@ -68,5 +69,19 @@ export const attractionRoute = Router()
         await attDel.delete()
         res.json(attDel.nameAttraction)
     })
+
+    // .get('/category/', async (req, res) => {
+    //     const allCategory = await AttractionRecord.getAllCat();
+    //     res.json(allCategory )
+    // })
+
+    .get('/category/:category', async (req, res) => {
+        const oneCategory = await CategoryRecord.getAttCat(Number(req.params.category));
+        // console.log(attListRes)
+        res.json(oneCategory)
+    })
+
+
+
 
 

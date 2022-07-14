@@ -8,7 +8,7 @@ type AttractionResult = [AttractionEntity[], FieldPacket[]]
 
 export class AttractionRecord implements AttractionEntity {
     id: string;
-    // categoryId: string;
+    idCategory: number;
     nameAttraction: string;
     img: string;
     text: string;
@@ -18,12 +18,14 @@ export class AttractionRecord implements AttractionEntity {
 
     constructor(obj: AdAttractionEntity) {
         this.id = obj.id;
+        this.idCategory = obj.idCategory;
         this.nameAttraction = obj.nameAttraction;
         this.img = obj.img;
         this.text = obj.text;
         this.town = obj.town;
         this.valueLike = obj.valueLike;
         this.active = obj.active;
+
     }
 
     async insert(): Promise<string> {
@@ -33,7 +35,7 @@ export class AttractionRecord implements AttractionEntity {
             throw new Error("Wystapił problem z przypisaniem ID")
         }
 
-        await pool.execute("INSERT INTO `attraction`(`id`, `nameAttraction`, `img`, `text`, `town`) VALUES(:id, :nameAttraction, :img, :text, :town)",this)
+        await pool.execute("INSERT INTO `attraction`(`id`, `nameAttraction`, `img`, `text`, `town`, `idCategory`) VALUES(:id, :nameAttraction, :img, :text, :town, :idCategory)",this)
         return this.id
     }
 
@@ -61,6 +63,8 @@ export class AttractionRecord implements AttractionEntity {
         const [results] = (await pool.execute("SELECT * FROM `attraction` ORDER BY nameAttraction DESC")) as AttractionResult
         return results.map(obj => new AttractionRecord(obj))
     }
+
+
 
     static async getOne(id: string): Promise<AttractionRecord | null> {
         const [results] = await pool.execute("SELECT * FROM `attraction` WHERE `id` = :id",{
