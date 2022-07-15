@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 15 Lip 2022, 18:42
+-- Czas generowania: 15 Lip 2022, 21:48
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.4
 
@@ -54,7 +54,7 @@ CREATE TABLE `attraction` (
   `text` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `idCategory` int(6) NOT NULL DEFAULT 1,
   `valueLike` smallint(4) NOT NULL DEFAULT 0,
-  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -63,28 +63,15 @@ CREATE TABLE `attraction` (
 --
 
 INSERT INTO `attraction` (`id`, `nameAttraction`, `town`, `text`, `idCategory`, `valueLike`, `img`, `active`) VALUES
-('0a3bc589-d3f1-4689-a2f7-0624bbc22644', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 5, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('0c3cdd5f-ce9c-403a-971a-3a3587550623', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 5, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('18c735ef-a6df-4ebb-a145-48d07030047d', 'Jezioro lazurowe', 'k.Poznania', 'Piękne Jezioro lazurowe!', 1, 0, 'https://travelstory.pl/wp-content/uploads/2018/10/DJI_0595-1024x767.jpg', 0),
-('1b9377f0-0fc2-4cd6-8838-84195b74c7ff', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('1e48f242-a5fe-4ac0-b4c2-7036a6f1ebe1', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('24d9994d-7b76-4e5e-83be-217cbefc4b0b', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('2b7e4c28-19ae-4463-b641-aec05db12454', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('3584282e-0ce0-43b6-85d8-83b68bbb9c52', 'Plaża w Decznie ', 'Świecie', 'Piękna plaża w Decznie', 3, 0, 'https://d-art.ppstatic.pl/kadry/k/r/b0/bf/5f76eb7c3b94b_o_full.jpg', 0),
-('5bbd2093-1838-45b1-8d67-ad98e7330265', 'dawdawdawdwadawd', 'dawdawdaw', 'awdawdawdawdaww', 3, 0, 'https://grudziadz.pl/uploads/galleries/38b722904bda131c489314d7a302f721.jpg', 0),
-('6f3a06a9-5ead-4ba8-9cd6-abe0ab722268', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('8769debe-b139-4893-a090-041d64c073a9', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('9043a2b1-282a-4313-845f-984f70b4ee9c', 'Piękny rynek w Grudziądzu', 'Grudziądz', 'Grudziądzki Rynek to plac w kształcie prostokąta o wymiarach 54 × 70 m, z odejściem ośmiu ulic w czterech rogach.', 1, 1, 'https://grudziadz.pl/uploads/galleries/38b722904bda131c489314d7a302f721.jpg', 0),
-('952a794b-772c-4902-858f-7891c89cacd2', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('9bfb0232-0fd5-4c41-aab3-d00d0cfcba05', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 1, 17, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('ae177f59-7665-4a9d-ad72-7b39ad52e765', 'Piękne Góry w Tatrach', 'Zakopane', 'Piękne góry w tatrach! :D', 1, 5, 'https://apartamentyzakopane.pl/blog/wp-content/uploads/2020/04/20120719_AB3_0543.jpg', 0),
-('af7d0150-749c-4e36-b658-ae4d45b7b05e', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('be93b471-0aea-4135-bc6e-8d5784285e41', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('c0f92c88-4907-45e0-982e-b2970c2674a7', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('d2e1cbe3-704b-4d62-94e6-9152ac297c8a', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('e1efc78c-39d7-4d64-b61f-ec6185fe9fbe', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('fc1eb0a5-1f6d-47d2-bd5e-908ccec8bf7b', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0),
-('fc559a95-3dbd-4767-bb96-659b6db78f99', 'Spichrze Grudziądzkie', 'Grudziądz', 'Spichrze piekne :D', 2, 0, 'https://grudziadz.pl/uploads/galleries/b63b0b7bfc5d5e409424846ee1b7b63b.jpg', 0);
+('0a2cbbad-7c4b-4d03-af8f-d6c78182a1f4', 'Jezioro Wigry', 'Wigry', 'Jezioro Wigry należy do Wigierskiego Parku Narodowego. Jest to jeden z najczystszych akwenów w Polsce, stąd nazywane jest także jeziorem o kryształowej toni.', 3, 0, 'https://images.slonecznapolska.com.pl/news/2013051822541707454403-a1mb31.png', 0),
+('2e4eef3f-fb55-4f3b-a9ef-ea02ebe9d6a8', 'Tor motocrossowy Sulnówko', 'Sulnówko', 'Tor motocrossowy to miejsce, gdzie możesz przeżyć prawdziwą przygodę. Da się na nim jeździć rowerem, motocyklem i quadem. Sprawdź, jakie są polskie tory crossowe polecane przez innych miłośników motoryzacji. Dowiedz się, jak stworzyć samodzielnie taki tor!', 1, 0, 'https://m.wm.pl/2021/04/n/4-706811.jpg', 0),
+('67a5e2eb-cd99-4715-aaf8-a36fcfc0c140', 'MegaPark w stylu dzikiego zachodu!', 'Grudziądz', 'Mega Park powstał 1 maja 1997 roku. Zaczęliśmy od \"Rancho\" - saloonu, w którym zarówno dawniej jak i dziś specjalnością są smażone ryby. Po kolejnych rozbudowach powstało Zoo, Dziki Zachód czyli Miasteczko Westernowe Kansas oraz Mexico City. ', 2, 0, 'https://slodkoslodka.pl/wp-content/uploads/2020/07/IMG_20200712_164126523_HDR.jpg', 0),
+('6aa2c353-b781-4a54-b295-951a30063923', 'Jezioro Drawsko', 'Drawsko', 'Jeziora w Polsce często mają wyspy. To leżące na Pojezierzu Drawskim może pochwalić się aż dwunastoma. Największa z nich to Bielawa ze śladami wczesnego osadnictwa. ', 3, 0, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Jezioro_Drawsko_%281%29.jpg/800px-Jezioro_Drawsko_%281%29.jpg', 0),
+('7fba6034-845f-47bd-8f2a-fd281c5a74f5', 'Jezioro Piaseczno', 'Ludwin', 'Czysta woda sprawia, że miejsce jest popularnym ośrodkiem wypoczynkowym na Pojezierzu Łęczycko-Włodawskim. Ale, ale…to nie wszystko! Piaszczyste dno Jeziora Piaseczno kryje w sobie tajemnice, sięgające czasów Drugiej Wojny Światowej. ', 3, 0, 'https://leczna24.pl/f/p/piasenczno_728897927.jpg', 0),
+('c6a7acc6-ff49-40fb-bb12-24d31093bd13', 'IT.Focus - Producent najlepszych programistów! :D', 'Katowice', 'Najlepsze producent programistów w Polsce! Zapraszamy na MegaK.pl oraz kanał Youtube: Programistyczne Świry, gdzie możecie znaleźć masę ciekawostek! :) ', 1, 777, 'https://www.zsel1.pl/wp-content/uploads/2022/03/xlogo_IT_focus-1170x827.jpg.pagespeed.ic.eHoKsxZ8kT.jpg', 0),
+('ecbc7146-52a8-44bf-8eda-3801150fb69b', 'Mandoria - Park rozrywki', 'Rzgów', 'Największy całoroczny park rozrywki w Polsce - Mandoria to ponad 20 atrakcji pod dachem. Kolejki górskie, wielkie karuzele, zjeżdżalnie i inne atrakcje. Wszystko w jednym miejscu.', 2, 0, 'https://kopanina.pl/wp-content/uploads/2022/04/Tytulowe-732x380.jpg', 0),
+('f03aa82d-a881-4a44-9c61-eb7d77f66ba6', 'Energylandia - Park dla dzieci i nie tylko! ', 'Zator', ' tematyczny park rozrywki położony w Zatorze w województwie małopolskim, otwarty 14 lipca 2014 roku. Największy park rozrywki w Polsce', 1, 0, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Energylandia_-_Formu%C5%82a%2C_Dragon_2018.jpg/1200px-Energylandia_-_Formu%C5%82a%2C_Dragon_2018.jpg', 0),
+('f73d3f14-82a1-4351-a4e6-bf92e24d83eb', 'Farma Iluzji - Mościska', 'Mościska', 'Farma Iluzji to niezwykły park o charakterze rozrywkowo-edukacyjnym osadzony w kontekście iluzji. Łącząc w umiejętny sposób atrakcje dla całej rodziny z doświadczeniami i faktami naukowymi, wspomaga rozwój intelektualny i sensoryczny oraz zachęca do aktywnej zabawy na świeżym powietrzu i piknikowania.', 2, 0, 'https://www.dzieciochatki.pl/storage/files/Artykuly/farma-iluzji/wycieczka-z-dziecmi-na-farme-iluzji.jpg', 0);
 
 --
 -- Indeksy dla zrzutów tabel
