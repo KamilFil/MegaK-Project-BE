@@ -14,11 +14,11 @@ export class CategoryRecord implements CategoryEntity{
     }
 
     static async getAllCat():Promise<CategoryRecord[]> {
-        const [results] = (await pool.execute("SELECT * FROM `att-caregory`")) as [[], FieldPacket[]]
+        const [results] = (await pool.execute("SELECT * FROM `att-caregory`")) as CategoryResult
         return results.map(obj => new CategoryRecord(obj))
     }
 
-    static async getAttCat(categoryId:number): Promise<CategoryRecord> {
+    static async getOneCat(categoryId:number): Promise<CategoryRecord> {
         const [results] = (await pool.execute("SELECT * FROM `att-caregory` WHERE `idCategory` = :categoryId", {
             categoryId,
         })) as CategoryResult

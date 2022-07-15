@@ -70,15 +70,11 @@ export const attractionRoute = Router()
         res.json(attDel.nameAttraction)
     })
 
-    // .get('/category/', async (req, res) => {
-    //     const allCategory = await AttractionRecord.getAllCat();
-    //     res.json(allCategory )
-    // })
 
-    .get('/category/:category', async (req, res) => {
-        const oneCategory = await CategoryRecord.getAttCat(Number(req.params.category));
-        // console.log(attListRes)
-        res.json(oneCategory)
+    .get('/:category', async (req, res) => {
+        const attListRes = await AttractionRecord.getAttCat(Number(req.params.category));
+        const oneCategory = await CategoryRecord.getOneCat(Number(req.params.category));
+        res.json({attListRes, oneCategory})
     })
 
 

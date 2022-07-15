@@ -64,6 +64,12 @@ export class AttractionRecord implements AttractionEntity {
         return results.map(obj => new AttractionRecord(obj))
     }
 
+    static async getAttCat(categoryId:number): Promise<AttractionRecord[]> {
+        const [results] = (await pool.execute("SELECT * FROM `attraction` WHERE `idCategory` = :categoryId", {
+            categoryId
+        })) as AttractionResult
+        return results.map(obj => new AttractionRecord(obj))
+    }
 
 
     static async getOne(id: string): Promise<AttractionRecord | null> {
